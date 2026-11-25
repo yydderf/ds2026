@@ -1,0 +1,3 @@
+[submodule "part1/WANDS"]
+	path = part1/WANDS
+	url = https://github.com/wayfair/WANDS.git
