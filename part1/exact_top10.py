@@ -1,13 +1,13 @@
 from sentence_transformers import SentenceTransformer
 from pprint import pprint
+
+from common import load_embed
+
 import pandas as pd, numpy as np
 
 p = pd.read_csv("WANDS/dataset/product.csv", sep="\t").fillna("")
-model = SentenceTransformer("all-MiniLM-L6-v2")
-texts = (p.product_name + " " + p.product_description).tolist()
-X = model.encode(texts, normalize_embeddings=True).astype("float32")
+X, q = load_embed()
 
-q = model.encode("salon chair", normalize_embeddings=True)
 eligible = np.flatnonzero(p.product_class.to_numpy() == "Massage Chairs")
 
 scores = X[eligible] @ q

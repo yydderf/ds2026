@@ -1,1 +1,4 @@
 part2/hnm/
+part1/*.npy
+
+__pycache__/
